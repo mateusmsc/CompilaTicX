@@ -1,0 +1,11 @@
+proc main () {
+
+
+aMor Amor
+fff :=
+>  #  #
+>> Oi L <<
+>> Teste Comment <<
+"  ,
+
+}

@@ -1,0 +1,94 @@
+package Sintatica.Teste;
+
+import java.io.*;
+import java.lang.*;
+import java_cup.runtime.*;
+import java_cup.runtime.Symbol;
+import java.util.ArrayList;
+import java.util.*;
+import Sintatica.Teste.Lexer;
+
+parser code
+{:
+    private Symbol s;  //s recebe o Symbol da classe Symbol
+    
+    public static void main(String args[]) throws Exception{
+    //    new Parser (new Yylex(System.in)).parse();
+    }
+    
+    public void syntax_error(Symbol s){
+        this.s = s; //recebe simbolo que deu erro        
+    }
+
+    //metodo para pegar o "s"
+    public Symbol getS(){
+        return this.s;
+}
+:};
+
+terminal VAR, MINUS, VIRG, PVIRG, ID, INT, CHAR, FLOAT, PROC, LPAR, RPAR, LCHA, RCHA;
+terminal SETOP, WHILE, IF, ELSE, PRINT, RETURN, PLUS, TIMES, DIV, MOD, AND, OR, NOT, EQ;
+terminal DIFF, LEQ, MEQ, LTH, MTH, INTL, CHARL, FLOATL, VOID;
+
+non terminal programa, decl_global, decl_var, decl_func, lista_idents, tipo, nome_args;
+non terminal bloco, lista_comandos, comando, atribuicao, iteracao, decisao, escrita;
+non terminal retorno, chamada_func_cmd, expressao, lista_exprs,chamada_func, expr_basica;
+non terminal param_formais;
+
+precedence nonassoc ELSE;
+precedence left OR, AND;
+precedence left EQ, DIFF, LTH, MTH, LEQ, MEQ;
+precedence left  PLUS, MINUS;
+precedence left  TIMES, DIV, MOD;
+precedence left NOT;
+
+start with programa;
+
+programa ::= decl_global;
+
+decl_global ::= decl_var | decl_func | decl_global decl_var | decl_var decl_func;
+
+decl_var ::= VAR lista_idents MINUS tipo PVIRG;
+
+lista_idents ::= ID | lista_idents VIRG ID ;
+
+tipo ::= INT | CHAR | FLOAT;
+
+decl_func ::= PROC nome_args MINUS tipo bloco | PROC nome_args bloco;
+
+nome_args ::= ID LPAR param_formais RPAR | nome_args ID LPAR param_formais RPAR |
+ID LPAR RPAR | nome_args ID LPAR RPAR;
+
+param_formais ::= ID MINUS tipo | param_formais VIRG ID MINUS tipo;
+
+bloco ::= LCHA lista_comandos RCHA;
+
+lista_comandos ::= comando | lista_comandos comando;
+
+comando ::= decl_var | atribuicao | iteracao | decisao | escrita | retorno | bloco |
+chamada_func_cmd;
+
+atribuicao ::= ID SETOP expressao PVIRG;
+
+iteracao ::= WHILE LPAR expressao RPAR comando;
+
+decisao ::= IF LPAR expressao RPAR comando | IF LPAR expressao RPAR comando ELSE comando;
+
+escrita ::= PRINT LPAR lista_exprs RPAR PVIRG |PRINT LPAR RPAR PVIRG;
+
+chamada_func_cmd ::= chamada_func PVIRG;
+
+retorno ::= RETURN expressao PVIRG;
+
+chamada_func ::= ID LPAR lista_exprs RPAR | chamada_func ID LPAR lista_exprs RPAR;
+
+lista_exprs ::= expressao | lista_exprs VIRG expressao;
+
+expressao ::= expressao PLUS expressao | expressao MINUS expressao |
+expressao TIMES expressao | expressao DIV expressao | expressao MOD expressao |
+expressao AND expressao | expressao OR expressao | expressao EQ expressao |
+expressao DIFF expressao | expressao LEQ expressao | expressao LTH expressao |
+expressao MEQ expressao | expressao MTH expressao | expr_basica;
+
+expr_basica ::= LPAR expressao RPAR | NOT expr_basica | INTL | CHARL | FLOATL | ID |
+chamada_func;
