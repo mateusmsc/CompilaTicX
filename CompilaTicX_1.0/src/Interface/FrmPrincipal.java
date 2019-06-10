@@ -71,10 +71,11 @@ public class FrmPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			
 				String test = txtArquivo.getText();
+				Lex.resultado ="";
 				try {
 					Lex.analisar(test);
 					Ana.analisaSint(test);
-			        textPaneAnaSintática.setText(Ana.resposta); 
+					textPaneAnaSintática.setText(Ana.resposta); 
 					textPaneLex.setText(Lex.resultado);
 					textPaneCodFonte.setText(Lex.codFonte);
 				

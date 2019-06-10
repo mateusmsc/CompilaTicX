@@ -19,10 +19,10 @@ public class AnaliseSint {
         parser p = new parser(new Lexer(new StringReader(sourcecode))); 
         try {
              p.parse();
-             resposta ="Analise realizada corretamente";
+             resposta ="Analise Sintática realizada corretamente";
         } catch (Exception e) {
              Symbol s = p.getS();
-             resposta= "Erro de Sintaxe. Linha: " + (s.right + 1) + " Coluna: " + s.left + ". Texto: \"" + s.value + "\"";
+             resposta= "Erro de Sintaxe. Espera-se um caractere antes de:\nLinha: " + (s.right+1) + " Coluna: " + s.left + ". Texto: \"" + s.value + "\"";
         }
 	}
 	
