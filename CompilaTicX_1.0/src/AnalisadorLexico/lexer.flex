@@ -12,6 +12,7 @@ NUM_DEC = [0-9]*,[0-9]+ | [0-9]+,[0-9]*
 WHITE=[ \b\t\r]
 ASPAS = \"
 ASPASIMPLES = \'
+IDENTIFICADOR = [a-z][a-zA-Z_|0-9]*
 
 
 %{
@@ -74,7 +75,8 @@ public String lexeme;
 ( "var")  {lexeme = yytext(); return PR_VAR;}  
 
 /* ID */
-{L}({L}|{D})* {lexeme=yytext(); return ID;}
+//{L}({L}|{D})* {lexeme=yytext(); return ID;}
+{IDENTIFICADOR} 	{lexeme =yytext(); return ID;}
 
 /* NUMERO < 0 e >0*/
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return NUMERO;}

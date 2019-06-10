@@ -17,7 +17,7 @@ public class Testador {
 		int cont = 0;
 		int contLinha=1;
 		//String texto = lerArquivo("C:\\Users\\mat3u\\Desktop\\Compiladores\\CompilaTIC\\CompilaTicX_1.0\\src\\AnalisadorLexico\\teste.txt");
-		String texto = lerArquivo("C:\\Users\\mat3u\\Desktop\\Compiladores\\CompilaTIC\\CompilaTicX_1.0\\src\\AnaliseSintatica\\teste1.txt");
+		String texto = lerArquivo("C:\\Users\\mat3u\\Desktop\\CompilaTicX\\CompilaTicX_1.0\\src\\AnalisadorLexico\\teste.txt");
 		Lexer lexer = new Lexer(new StringReader(texto));
 		String resultado = "";
 
