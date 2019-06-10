@@ -1,5 +1,4 @@
 proc main(){
-
 	var n, nRebuilt - int;
 
 	n := 51423; 

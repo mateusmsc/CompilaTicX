@@ -11,7 +11,7 @@ import java_cup.runtime.Symbol;
 public class Principal {
 
 	public static void main(String[] args) throws IOException {
-		String caminho ="C:\\Users\\mat3u\\Desktop\\Compiladores\\CompilaTIC\\CompilaTicX_1.0\\src\\AnalisadorLexico\\teste1.txt";
+		String caminho ="C:\\Users\\Alunotgn\\Desktop\\CompilaTicX\\CompilaTicX_1.0\\src\\AnalisadorLexico\\teste1.txt";
 		AnaliseSint ana = new AnaliseSint();
 		ana.analisaSint(caminho);
 		System.out.println(ana.resposta);

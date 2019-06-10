@@ -11,6 +11,8 @@ public class AnaLexica {
 	
 	public String resultado = "";
 	public String codFonte;
+	public String erro="1";
+	
 	
 	public void analisar(String caminho) throws IOException {
 		int cont = 0;
@@ -34,6 +36,7 @@ public class AnaLexica {
 			case ERROR:
 				cont++;
 				resultado = resultado + "Erro na linha " + contLinha + ": Símbolo não reconhecido na coluna: " + cont +"\n";
+				erro ="0"; 
 				break;
 
 			case ID:
