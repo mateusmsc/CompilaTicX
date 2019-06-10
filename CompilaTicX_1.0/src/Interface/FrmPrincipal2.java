@@ -87,11 +87,13 @@ public class FrmPrincipal2 extends JFrame {
 				Lex.resultado ="";
 				try {
 					Lex.analisar(test);
+					//textPaneAnaSintática.setText(Lex.erro);
+					Ana.analisaSint(test,Lex.erro);
 					textPaneAnaSintática.setText(Lex.erro);
-					textPaneAnaSintática.setText(Ana.resposta); 
+					textPaneAnaSintática.setText(Ana.resposta);
 					textPaneLex.setText(Lex.resultado);
 					textPaneCodFonte.setText(Lex.codFonte);
-					Ana.analisaSint(test);
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

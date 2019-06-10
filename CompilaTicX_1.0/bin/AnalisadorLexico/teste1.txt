@@ -1,7 +1,8 @@
 proc main(){
 	var n, nRebuilt - int;
+	
 
-	n := 51423; 
+	n : 51423; 
 
 	>> A  de inteiros arr a menos do que seu valor inicial. <<
 
