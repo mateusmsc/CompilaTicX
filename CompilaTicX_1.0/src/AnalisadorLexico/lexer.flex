@@ -6,14 +6,13 @@ import static AnalisadorLexico.Token.*;
 %class Lexer
 %type Token
 
-L = [a-zA-Z_]
 D = [0-9]
 NUM_DEC = [0-9]*,[0-9]+ | [0-9]+,[0-9]* 
 WHITE=[ \b\t\r]
 ASPAS = \"
 ASPASIMPLES = \'
 IDENTIFICADOR = [a-z][a-zA-Z_|0-9]*
-
+SINGLECOMMENT = \*{2}[\x20-\xED]*[\n|\r]
 
 %{
 public String lexeme;
@@ -42,6 +41,7 @@ public String lexeme;
 
 /* Comentarios */
 (">>"(.)*(.)"<<")     {lexeme = yytext(); return COMENTARIO;}
+{SINGLECOMMENT}     {lexeme = yytext(); return COMENTARIO_SIMPLES;}
 
 /* Operadores Aritimeticos*/
 ("+")    	{lexeme = yytext(); return OP_ADD;}
