@@ -14,6 +14,11 @@ ASPASIMPLES = \'
 IDENTIFICADOR = [a-z][a-zA-Z_|0-9]*
 SINGLECOMMENT = \*{2}[\x20-\xED]*[\n|\r]
 
+//Literais
+CHAR = \'[0-9|a-zA-Z|\n|\t| |:|\(|\)|,]\'
+INT = [+-]{1}[0-9]+|[0-9]+
+FLOAT = [[0-9]*,[0-9]+] | [[0-9]*,[0-9]+E[+-]{1}[0-9]*,[0-9]+]
+
 %{
 public String lexeme;
 %}
@@ -77,6 +82,12 @@ public String lexeme;
 /* ID */
 //{L}({L}|{D})* {lexeme=yytext(); return ID;}
 {IDENTIFICADOR} 	{lexeme =yytext(); return ID;}
+
+/*Literais*/
+{CHAR} 	{lexeme = yytext(); return CHAR_LITERAL;}
+{INT} 	{lexeme = yytext(); return INT_LITERAL;}
+{FLOAT} 	{lexeme = yytext(); return FLOAT_LITERAL;}
+
 
 /* NUMERO < 0 e >0*/
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return NUMERO;}

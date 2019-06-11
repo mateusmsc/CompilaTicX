@@ -138,7 +138,21 @@ public class AnaLexica {
 				cont++;
 				resultado = resultado + "Linha: " + contLinha + "<NUMERO_DECIMAL>: " + lexer.lexeme + "\n";
 				break;
-
+				
+			case CHAR_LITERAL:
+				cont++;
+				resultado = resultado + "Linha: " + contLinha + "<CHAR_LITERAL>: " + lexer.lexeme + "\n";
+				break;
+				
+			case INT_LITERAL:
+				cont++;
+				resultado = resultado + "Linha: " + contLinha + "<INT_LITERAL>: " + lexer.lexeme + "\n";
+				break;
+				
+			case FLOAT_LITERAL:
+				cont++;
+				resultado = resultado + "Linha: " + contLinha + "<FLOAT_LITERAL>: " + lexer.lexeme + "\n";
+				break;
 			case OP_DIFERENTE:
 				cont++;
 				resultado = resultado + "Linha: " + contLinha + "<OP_LOGICO>: " + lexer.lexeme + "\n";
